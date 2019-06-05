@@ -4,6 +4,8 @@ import { IntlProvider } from 'react-intl';
 
 import HomePage from '../index';
 
+const { expect } = global;
+
 describe('<HomePage />', () => {
   it('should render and match the snapshot', () => {
     const {

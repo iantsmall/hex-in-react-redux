@@ -6,13 +6,42 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { Helmet } from 'react-helmet';
+import { Container, Row, Col, Jumbotron } from 'react-bootstrap';
+
+import HexGame from 'containers/oldapp/hex-game';
+import Menu from 'containers/Menu/Loadable';
 
 export default function HomePage() {
+  const boardSize = 9;
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <React.Fragment>
+      <Helmet>
+        <title>Hex in React Redux</title>
+        <meta
+          name="description"
+          content="Hex in React using React Redux and Redux Saga"
+        />
+      </Helmet>
+      <Container>
+        <Row>
+          <Col xs={12}>
+            <Menu />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <div id="alert" />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <Jumbotron id="viewport" className="modal-container">
+              <HexGame boardSize={boardSize} />
+            </Jumbotron>
+          </Col>
+        </Row>
+      </Container>
+    </React.Fragment>
   );
 }
