@@ -4,7 +4,7 @@ import {
   ButtonGroup,
   Button,
   DropdownButton,
-  MenuItem,
+  DropdownItem,
   Alert,
   Container,
   Row,
@@ -180,9 +180,9 @@ class HexGame extends React.Component {
     const moves = history.map((turn, move) => {
       const desc = move ? `Move #${move}` : 'Game start';
       return (
-        <MenuItem key={move} eventKey={move} onClick={() => this.jumpTo(move)}>
+        <DropdownItem key={move} eventKey={move} onClick={() => this.jumpTo(move)}>
           {desc}
-        </MenuItem>
+        </DropdownItem>
       );
     });
 
