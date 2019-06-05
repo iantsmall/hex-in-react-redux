@@ -1,4 +1,10 @@
-import React from 'react';
+/**
+ *
+ * HexBoard
+ *
+ */
+
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { gridPoints } from 'utils/hexgrid';
 import Hex from 'components/Hex';
@@ -56,4 +62,4 @@ HexBoard.defaultProps = {
   },
 };
 
-export default HexBoard;
+export default memo(HexBoard);

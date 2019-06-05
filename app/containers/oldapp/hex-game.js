@@ -10,7 +10,10 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
-import HexBoard from './hex-board';
+import HexBoard from 'components/HexBoard';
+
+// TODO replace with a nice in app GUI console for later reference
+const recordDebugLog = (msg) => console.debug(msg);
 
 const convertArrayToMatrix = (arr, width) => {
   const rows = [];
@@ -66,13 +69,13 @@ const findPath = (origin, desination, hexes) => {
   // simple breadth first search for path in matrix of hexes
   const toVisit = [originHex]; // hexes to visit
   // while toVisit is not empty visit the next hex.
-  console.log(`Starting path finding ${originHex.owner}`);
+  recordDebugLog(`Starting path finding ${originHex.owner}`);
   for (
     let nextHex = toVisit.shift();
     nextHex !== undefined;
     nextHex = toVisit.shift()
   ) {
-    console.log(`    Visting${JSON.stringify(nextHex)}`);
+    recordDebugLog(`    Visting${JSON.stringify(nextHex)}`);
     nextHex.visited = true;
     // check if next hex is the desintation, return true if yes
     if (nextHex === destinationHex) {
@@ -90,12 +93,12 @@ const findPath = (origin, desination, hexes) => {
         nextNeighbor.owner === nextHex.owner &&
         !nextNeighbor.visited;
       if (isVisitable) {
-        console.log(`        Adding${JSON.stringify(nextNeighbor)}`);
+        recordDebugLog(`        Adding${JSON.stringify(nextNeighbor)}`);
         toVisit.push(nextNeighbor);
       }
     }
   }
-  console.log('Finished path finding');
+  recordDebugLog('Finished path finding');
   return false;
 };
 
