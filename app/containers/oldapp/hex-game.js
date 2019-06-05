@@ -1,6 +1,7 @@
 import React from 'react';
 import { gridPoints } from 'utils/hexgrid';
 import {
+  ButtonToolbar,
   ButtonGroup,
   Button,
   DropdownButton,
@@ -213,24 +214,26 @@ class HexGame extends React.Component {
       <Container className="game">
         <Row>
           <Col xs={12} className="game-controls">
-            <ButtonGroup justified>
-              <Button href="#" onClick={handleJumpToFirstTurn}>
-                &lt;&lt;
-              </Button>
-              <Button href="#" onClick={handleJumpToPrevTurn}>
-                &lt;
-              </Button>
-              <DropdownButton title="" id="bg-justified-dropdown">
-                {moves}
-              </DropdownButton>
-              <Button href="#" onClick={handleJumpToNextTurn}>
-                &gt;
-              </Button>
-              <Button href="#" onClick={handleJumpToLastTurn}>
-                &gt;&gt;
-              </Button>
-            </ButtonGroup>
-            <Alert bsStyle={winner ? 'success' : 'info'}>{status}</Alert>
+            <ButtonToolbar className="d-flex flex-column">
+              <ButtonGroup>
+                <Button href="#" onClick={handleJumpToFirstTurn}>
+                  &lt;&lt;
+                </Button>
+                <Button href="#" onClick={handleJumpToPrevTurn}>
+                  &lt;
+                </Button>
+                <DropdownButton title="" id="bg-justified-dropdown">
+                  {moves}
+                </DropdownButton>
+                <Button href="#" onClick={handleJumpToNextTurn}>
+                  &gt;
+                </Button>
+                <Button href="#" onClick={handleJumpToLastTurn}>
+                  &gt;&gt;
+                </Button>
+              </ButtonGroup>
+            </ButtonToolbar>
+            <Alert variant={winner ? 'success' : 'info'}>{status}</Alert>
           </Col>
           <Col sm={6} xs={12} className="game-info" />
         </Row>
