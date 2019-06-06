@@ -10,14 +10,13 @@ import { defineMessages } from 'react-intl';
 
 export const scope = 'app.components.ComingSoonModal';
 
-
 const features = [
-        'Improved UI for rules and features',
-        'Nicer framing graphics for game',
-        'Fancier board and tile images',
-        "improved 'Nav' menu",
-        'Conversion to react-redux for state management',
-      ];
+  'Improved UI for rules and features',
+  'Nicer framing graphics for game',
+  'Fancier board and tile images',
+  "improved 'Nav' menu",
+  'Conversion to react-redux for state management',
+];
 const bugs = [];
 
 export default defineMessages({
@@ -29,29 +28,27 @@ export default defineMessages({
     id: `${scope}.body`,
     defaultMessage: '{summary} {features} {bugs}',
     values: {
-      summary: (
-        <p>This is a simple road map for coming features.</p>
-      ),
+      summary: <p>This is a simple road map for coming features.</p>,
       features: (
         <div id="planned-features">
           <h2>Planned Features</h2>
-          <ul>{features.map(feature => (
-            <li key={`feature_${feature}`}>{feature}</li>
-          ))}</ul>
+          <ul>
+            {features.map(feature => (
+              <li key={`feature_${feature}`}>{feature}</li>
+            ))}
+          </ul>
         </div>
       ),
       bugs: (
         <div id="bug-fixes">
           <h2>Known Bugs</h2>
-          <ul>{bugs.map(bug =>
-            <li key={`bug_${bug}`}>{bug}</li>
-          )}</ul>
+          <ul>
+            {bugs.map(bug => (
+              <li key={`bug_${bug}`}>{bug}</li>
+            ))}
+          </ul>
         </div>
       ),
     },
   },
 });
-
-
-
-

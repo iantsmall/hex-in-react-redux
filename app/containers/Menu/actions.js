@@ -34,4 +34,3 @@ export function hideComingSoonAction() {
     type: HIDE_COMING_SOON_ACTION,
   };
 }
-

@@ -24,7 +24,7 @@ import {
   showRulesAction,
   showComingSoonAction,
   hideRulesAction,
-  hideComingSoonAction
+  hideComingSoonAction,
 } from './actions';
 
 export function Menu({ dispatch = null, menu }) {
@@ -75,7 +75,7 @@ export function Menu({ dispatch = null, menu }) {
         </Navbar.Collapse>
       </Navbar>
       <RulesModal onHide={onRulesHide} show={menu.showRules} />
-      <ComingSoonModal onHide={onComingSoonHide}  show={menu.showComingSoon} />
+      <ComingSoonModal onHide={onComingSoonHide} show={menu.showComingSoon} />
     </React.Fragment>
   );
 }

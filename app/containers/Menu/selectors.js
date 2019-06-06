@@ -6,7 +6,7 @@ import { initialState } from './reducer';
  */
 
 const selectMenuDomain = state => {
-  let next = { ...(state.menu || initialState) };
+  const next = { ...(state.menu || initialState) };
   // const location = state.router.location;
   // next.showRules = next.showRules||(location.hash === '#rules');
   // next.showComingSoon = next.showComingSoon||(location.hash === '#comingsoon');

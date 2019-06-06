@@ -11,12 +11,14 @@ import { Modal } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function RulesModal({show, onHide}) {
+function RulesModal({ show, onHide }) {
   return (
-    <Modal id="modal-rules" show={show} onHide={onHide} >
-        <Modal.Header closeButton>
-          <Modal.Title><FormattedMessage {...messages.title} /></Modal.Title>
-        </Modal.Header>
+    <Modal id="modal-rules" show={show} onHide={onHide}>
+      <Modal.Header closeButton>
+        <Modal.Title>
+          <FormattedMessage {...messages.title} />
+        </Modal.Title>
+      </Modal.Header>
       <Modal.Body>
         <FormattedMessage {...messages.rules} />
       </Modal.Body>

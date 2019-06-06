@@ -15,8 +15,8 @@ export const initialState = {};
 
 /* eslint-disable default-case, no-param-reassign */
 const menuReducer = (state = initialState, action) =>
-  produce(state, (draft) => {
-    switch (action.type ){
+  produce(state, draft => {
+    switch (action.type) {
       case SHOW_RULES_ACTION:
         draft.showRules = true;
         delete draft.showComingSoon;

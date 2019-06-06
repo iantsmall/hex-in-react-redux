@@ -1,9 +1,9 @@
-
+import { gridPoints } from 'utils/hexgrid';
 
 // TODO replace with a nice in app GUI console for later reference
-const recordDebugLog = (msg) => console.debug(msg);
+const recordDebugLog = msg => console.debug(msg);
 
-/// simple converter function to make a 2d array from a 1d array
+// / simple converter function to make a 2d array from a 1d array
 const convertArrayToMatrix = (arr, width) => {
   const rows = [];
   for (let index = 0; index < arr.length; index += 1) {
@@ -20,7 +20,7 @@ const convertArrayToMatrix = (arr, width) => {
   return rows;
 };
 
-/// retrieve the neighbors of a hex from a matrix
+// / retrieve the neighbors of a hex from a matrix
 const getNeighbors = (hex, matrix) => {
   const getHex = (x, y) => (matrix[y] !== undefined ? matrix[y][x] : undefined);
   const upLeft = getHex(hex.x, hex.y - 1);
@@ -32,7 +32,7 @@ const getNeighbors = (hex, matrix) => {
   return [upLeft, upRight, right, downRight, downLeft, left];
 };
 
-/// find a path within hexes from the origin index to the destination index
+// / find a path within hexes from the origin index to the destination index
 const findPath = (origin, desination, hexes) => {
   // convert raw hexes into more useful matrix storage
   const originType = hexes[origin];
@@ -93,8 +93,8 @@ const findPath = (origin, desination, hexes) => {
   return false;
 };
 
-/// determine who, if anyone, has won the game
-const calculateWinner = (hexes) => {
+// / determine who, if anyone, has won the game
+const calculateWinner = hexes => {
   // calculate winner of HexTile game by determining which has a winning path
   const isblueWinner = findPath(0, hexes.length - 1, hexes);
   const isRedWinner = !isblueWinner && findPath(1, hexes.length - 2, hexes);

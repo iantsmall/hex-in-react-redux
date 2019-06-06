@@ -15,7 +15,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectModalContainer from './selectors';
 import reducer from './reducer';
 
-export function ModalContainer() {
+export function ModalContainer(/* {dispatch} */) {
   useInjectReducer({ key: 'modalContainer', reducer });
 
   return (
@@ -29,7 +29,7 @@ export function ModalContainer() {
 }
 
 ModalContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -13,7 +13,6 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import { gridPoints } from 'utils/hexgrid';
 import {
   ButtonToolbar,
   ButtonGroup,
@@ -35,71 +34,71 @@ import {
   jumpToNextAction,
   jumpToPreviousAction,
   jumpToFirstAction,
-  jumpToLastAction
+  jumpToLastAction,
+  claimHexAction,
 } from './actions';
 
-export function HexGame({
-  boardSize,
-  dispatch,
-  hexGame: {history, winner, boardSize, isRedNext }
-}) {
-    useInjectReducer({ key: 'hexGame', reducer });
-    useInjectSaga({ key: 'hexGame', saga });
-    const status = winner ?
-      `Winner: ${winner}` :
-      `Next player: ${isRedNext ? 'Red' : 'Blue'}`;
-    return (
-      <Container className="game">
-        <Row>
-          <Col xs={12} className="game-controls">
-            <ButtonToolbar className="d-flex flex-column">
-              <ButtonGroup>
-                <Button href="#" onClick={dispatch(jumpToFirstAction())}>
-                  &lt;&lt;
-                </Button>
-                <Button href="#" onClick={dispatch(jumpToPreviousAction())}>
-                  &lt;
-                </Button>
-                <DropdownButton title="" id="bg-justified-dropdown">
-                  { history.map((turn, move) => (
-                     <DropdownItem
-                       key={move}
-                       eventKey={move}
-                       onClick={() => jumpToAction({destination: move})}
-                     >
-                       {move ? `Move #${move}` : 'Game start'}
-                     </DropdownItem>
-                   )}
-                </DropdownButton>
-                <Button href="#" onClick={dispatch(jumpToNextAction())}>
-                  &gt;
-                </Button>
-                <Button href="#" onClick={dispatch(jumpToLastAction())}>
-                  &gt;&gt;
-                </Button>
-              </ButtonGroup>
-            </ButtonToolbar>
-            <Alert variant={winner ? 'success' : 'info'}>{status}</Alert>
-          </Col>
-          <Col sm={6} xs={12} className="game-info" />
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <HexBoard
-              id="game-board"
-              type="pointy-topped"
-              size={10}
-              width={hexGame.boardSize}
-              height={hexGame.boardSize}
-              oX={10}
-              oY={10}
-              hexes={current.hexes}
-              onClick={hexKey => dispatch(claimHexAction({hexKey}))}
-            />
-          </Col>
-        </Row>
-      </Container>
-    );
+export function HexGame({ boardSize, dispatch, hexGame }) {
+  useInjectReducer({ key: 'hexGame', reducer });
+  useInjectSaga({ key: 'hexGame', saga });
+  const status = hexGame.winner
+    ? `Winner: ${hexGame.winner}`
+    : `Next player: ${hexGame.isRedNext ? 'Red' : 'Blue'}`;
+  if (boardSize !== hexGame.boardSize) {
+    // TODO handle boardSize being different than hexGame.boardSize
+  }
+  return (
+    <Container className="game">
+      <Row>
+        <Col xs={12} className="game-controls">
+          <ButtonToolbar className="d-flex flex-column">
+            <ButtonGroup>
+              <Button href="#" onClick={dispatch(jumpToFirstAction())}>
+                &lt;&lt;
+              </Button>
+              <Button href="#" onClick={dispatch(jumpToPreviousAction())}>
+                &lt;
+              </Button>
+              <DropdownButton title="" id="bg-justified-dropdown">
+                {hexGame.history.map((turn, move) => (
+                  <DropdownItem
+                    key={move}
+                    eventKey={move}
+                    onClick={() => jumpToAction({ destination: move })}
+                  >
+                    {move ? `Move #${move}` : 'Game start'}
+                  </DropdownItem>
+                ))}
+              </DropdownButton>
+              <Button href="#" onClick={dispatch(jumpToNextAction())}>
+                &gt;
+              </Button>
+              <Button href="#" onClick={dispatch(jumpToLastAction())}>
+                &gt;&gt;
+              </Button>
+            </ButtonGroup>
+          </ButtonToolbar>
+          <Alert variant={hexGame.winner ? 'success' : 'info'}>{status}</Alert>
+        </Col>
+        <Col sm={6} xs={12} className="game-info" />
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <HexBoard
+            id="game-board"
+            type="pointy-topped"
+            size={10}
+            width={hexGame.boardSize}
+            height={hexGame.boardSize}
+            oX={10}
+            oY={10}
+            hexes={hexGame.current.hexes}
+            onClick={hexKey => dispatch(claimHexAction({ hexKey }))}
+          />
+        </Col>
+      </Row>
+    </Container>
+  );
 }
 
 HexGame.propTypes = {

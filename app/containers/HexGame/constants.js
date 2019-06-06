@@ -3,7 +3,7 @@
  * HexGame constants
  *
  */
-export const ns = (val) => `app/HexGame/${val}`;
+export const ns = val => `app/HexGame/${val}`;
 export const JUMP_TO_ACTION = ns(JUMP_TO_ACTION);
 export const JUMP_TO_FIRST_ACTION = ns(JUMP_TO_FIRST_ACTION);
 export const JUMP_TO_LAST_ACTION = ns(JUMP_TO_LAST_ACTION);
