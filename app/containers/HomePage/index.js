@@ -9,7 +9,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Container, Row, Col, Jumbotron } from 'react-bootstrap';
 
-import HexGame from 'containers/oldapp/hex-game';
+import HexGame from 'containers/HexGame';
 import Menu from 'containers/Menu/Loadable';
 
 export default function HomePage() {

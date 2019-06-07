@@ -11,6 +11,7 @@ import {
   JUMP_TO_PREVIOUS_ACTION,
   JUMP_TO_NEXT_ACTION,
   CLAIM_HEX_ACTION,
+  CHANGE_BOARD_SIZE_ACTION,
 } from './constants';
 
 import { calculateWinner } from './utils';
@@ -61,14 +62,16 @@ const hexGameReducer = (state = initialState, action) =>
       case CLAIM_HEX_ACTION:
         setHexClaimed(state, draft, action.hexKey);
         break;
+      case CHANGE_BOARD_SIZE_ACTION:
+        draft.push({ boardSize: action.boardSize });
+        break;
     }
     // update calcluated state values (defensively always done after all actions)
     // TODO confirm this works as intended
-    draft = {
-      ...draft,
+    draft.push({
       isRedNext: isRedNext(draft.turnNumber),
       winner: calculateWinner(draft.history[draft.turnNumber].hexes),
-    };
+    });
   });
 
 export default hexGameReducer;

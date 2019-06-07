@@ -7,7 +7,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -28,7 +28,7 @@ import HexBoard from 'components/HexBoard';
 import makeSelectHexGame from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
+// import messages from './messages';
 import {
   jumpToAction,
   jumpToNextAction,
@@ -36,6 +36,7 @@ import {
   jumpToFirstAction,
   jumpToLastAction,
   claimHexAction,
+  changeBoardSizeAction,
 } from './actions';
 
 export function HexGame({ boardSize, dispatch, hexGame }) {
@@ -45,7 +46,10 @@ export function HexGame({ boardSize, dispatch, hexGame }) {
     ? `Winner: ${hexGame.winner}`
     : `Next player: ${hexGame.isRedNext ? 'Red' : 'Blue'}`;
   if (boardSize !== hexGame.boardSize) {
-    // TODO handle boardSize being different than hexGame.boardSize
+    // handle boardSize being different than hexGame.boardSize
+    dispatch(changeBoardSizeAction(hexGame.boardSize));
+    // return an empty fragment while we let the actions settle out
+    return <React.fragment />;
   }
   return (
     <Container className="game">
@@ -62,7 +66,9 @@ export function HexGame({ boardSize, dispatch, hexGame }) {
               <DropdownButton title="" id="bg-justified-dropdown">
                 {hexGame.history.map((turn, move) => (
                   <DropdownItem
-                    key={move}
+                    key={
+                      move /* eslint-disable-line react/no-array-index-key */
+                    }
                     eventKey={move}
                     onClick={() => jumpToAction({ destination: move })}
                   >
@@ -103,6 +109,12 @@ export function HexGame({ boardSize, dispatch, hexGame }) {
 
 HexGame.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  boardSize: PropTypes.number.isRequired,
+  hexGame: PropTypes.shapeOf({
+    history: PropTypes.array.isRequired,
+    boardSize: PropTypes.number.isRequired,
+    current: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

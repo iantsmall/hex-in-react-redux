@@ -82,6 +82,10 @@ export function Menu({ dispatch = null, menu }) {
 
 Menu.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  menu: PropTypes.shapeOf({
+    showRules: PropTypes.bool,
+    showComingSoon: PropTypes.bool,
+  }).isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -5,6 +5,7 @@ import {
   jumpToFirstAction,
   jumpToLastAction,
   claimHexAction,
+  changeBoardSizeAction,
 } from '../actions';
 
 import {
@@ -14,6 +15,7 @@ import {
   JUMP_TO_PREVIOUS_ACTION,
   JUMP_TO_NEXT_ACTION,
   CLAIM_HEX_ACTION,
+  CHANGE_BOARD_SIZE_ACTION,
 } from '../constants';
 
 describe('HexGame actions', () => {
@@ -67,6 +69,15 @@ describe('HexGame actions', () => {
         hexKey: 'Test Hex Key',
       };
       expect(claimHexAction(expected.hexKey)).toEqual(expected);
+    });
+  });
+  describe('Change Board Size Action', () => {
+    it('has a type of CHANGE_BOARD_SIZE_ACTION, and the expected boardSize', () => {
+      const expected = {
+        type: CHANGE_BOARD_SIZE_ACTION,
+        boardSize: 18,
+      };
+      expect(changeBoardSizeAction(expected.boardSize)).toEqual(expected);
     });
   });
 });

@@ -1,7 +1,7 @@
 import { gridPoints } from 'utils/hexgrid';
 
 // TODO replace with a nice in app GUI console for later reference
-const recordDebugLog = msg => console.debug(msg);
+const recordDebugLog = msg => console.debug(msg); // eslint-disable-line no-console
 
 // / simple converter function to make a 2d array from a 1d array
 const convertArrayToMatrix = (arr, width) => {
@@ -107,7 +107,7 @@ const calculateWinner = hexes => {
   return undefined;
 };
 
-export default {
+export {
   recordDebugLog,
   convertArrayToMatrix,
   getNeighbors,

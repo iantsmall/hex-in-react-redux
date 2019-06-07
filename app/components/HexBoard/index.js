@@ -17,7 +17,9 @@ function HexBoard({ type, size, oX, oY, width, height, onClick, hexes }) {
       const fill = owner === undefined ? 'white' : owner;
       return (
         <Hex
-          key={`hex_${key}_${owner}`} // es-lint-disable-line react/no-array-index-key
+          key={
+            `hex_${key}_${owner}` /* eslint-disable-line react/no-array-index-key */
+          }
           {...props}
           fill={fill}
           stroke="grey"
@@ -58,7 +60,7 @@ HexBoard.defaultProps = {
   width: 25,
   height: 25,
   onClick: i => {
-    console.log(`No onClick defined, click ${i} unhandled`);
+    console.warn(`No onClick defined, click ${i} unhandled`); // eslint-disable-line no-console
   },
 };
 

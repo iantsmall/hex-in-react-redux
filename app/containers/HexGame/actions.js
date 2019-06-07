@@ -10,6 +10,7 @@ import {
   JUMP_TO_PREVIOUS_ACTION,
   JUMP_TO_NEXT_ACTION,
   CLAIM_HEX_ACTION,
+  CHANGE_BOARD_SIZE_ACTION,
 } from './constants';
 
 export function jumpToAction({ destination }) {
@@ -47,5 +48,12 @@ export function claimHexAction({ hexKey }) {
   return {
     type: CLAIM_HEX_ACTION,
     hexKey,
+  };
+}
+
+export function changeBoardSizeAction({ boardSize }) {
+  return {
+    type: CHANGE_BOARD_SIZE_ACTION,
+    boardSize,
   };
 }
