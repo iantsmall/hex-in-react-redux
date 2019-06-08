@@ -10,7 +10,7 @@ const selectHexGameDomain = state => {
   const storedState = state.hexGame || initialState;
   return {
     ...storedState,
-    winner: calculateWinner(storedState.history),
+    winner: calculateWinner(storedState.history[storedState.turnNumber]),
     isRedNext: isRedNext(storedState.turnNumber),
   };
 };

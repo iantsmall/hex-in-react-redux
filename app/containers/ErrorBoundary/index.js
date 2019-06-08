@@ -36,7 +36,7 @@ const Scroll = styled.div`
   overflow: auto;
 `;
 
-class ErrorBoundary extends React.Component {
+export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { error: null, errorInfo: null };
@@ -87,6 +87,7 @@ ErrorBoundary.propTypes = {
   dispatch: PropTypes.func.isRequired,
   error: PropTypes.any,
   errorInfo: PropTypes.any,
+  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
 };
 
 function mapDispatchToProps(dispatch) {

@@ -40,25 +40,25 @@ const createInitState = boardSize => {
   };
 };
 
+/* eslint-disable no-param-reassign */
 const setTurn = (state, draft, newTurn) => {
   draft.turnNumber = Math.max(0, Math.min(state.history.length - 1, newTurn));
 };
 
 const setHexClaimed = (state, draft, hexKey) => {
-  const newHistory = state.history.slice(0, state.turnNumber + 1);
-  const hexes = Array.from(newHistory[newHistory.length - 1]); // copy the "current" board state
+  const history = state.history.slice(0, state.turnNumber + 1);
+  const hexes = Array.from(history[history.length - 1]); // copy the "current" board state
   // defensively check if this hex is alredy defined OR if there is already a winner
-  newHistory.push(hexes);
   if (!(hexes[hexKey] || calculateWinner(hexes))) {
     hexes[hexKey] = isRedNext(state.turnNumber) ? RED_PLAYER : BLUE_PLAYER;
-    draft.history = newHistory;
-    draft.turnNumber = newHistory.length-1;
+    history.push(hexes);
+    draft.history = history;
+    draft.turnNumber = history.length - 1;
   }
 };
 
 export const initialState = createInitState(5);
 
-/* eslint-disable default-case, no-param-reassign */
 const hexGameReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
@@ -72,20 +72,19 @@ const hexGameReducer = (state = initialState, action) =>
         setTurn(state, draft, state.history.length - 1);
         break;
       case JUMP_TO_PREVIOUS_ACTION:
-        setTurn(state, draft, state.currentTurn - 1);
+        setTurn(state, draft, state.turnNumber - 1);
         break;
       case JUMP_TO_NEXT_ACTION:
-        setTurn(state, draft, state.currentTurn + 1);
+        setTurn(state, draft, state.turnNumber + 1);
         break;
       case CLAIM_HEX_ACTION:
         setHexClaimed(state, draft, action.hexKey);
         break;
       case CHANGE_BOARD_SIZE_ACTION:
-        const newInitState = createInitState(action.boardSize);
-        draft.boardSize = newInitState.boardSize;
-        draft.history = newInitState.history;
-        draft.turnNumber = newInitState.turnNumber;
+        Object.assign(draft, createInitState(action.boardSize));
         break;
+      default:
+        break; // unrecognized action
     }
   });
 
