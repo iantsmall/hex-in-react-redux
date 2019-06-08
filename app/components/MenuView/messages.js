@@ -1,12 +1,12 @@
 /*
- * HomePage Messages
+ * MenuView Messages
  *
- * This contains all the text for the HomePage container.
+ * This contains all the text for the MenuView component.
  */
 import React from 'react';
 import { defineMessages } from 'react-intl';
 
-export const scope = 'app.containers.Menu';
+export const scope = 'app.components.MenuView';
 
 export default defineMessages({
   brand: {
