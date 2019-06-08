@@ -26,7 +26,7 @@ describe('HexGame actions', () => {
           type: JUMP_TO_ACTION,
           destination: i,
         };
-        expect(jumpToAction(expected.desination)).toEqual(expected);
+        expect(jumpToAction({ desination: i })).toEqual(expected);
       }
     });
   });

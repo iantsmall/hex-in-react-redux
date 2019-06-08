@@ -82,7 +82,7 @@ export function Menu({ dispatch = null, menu }) {
 
 Menu.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  menu: PropTypes.shapeOf({
+  menu: PropTypes.shape({
     showRules: PropTypes.bool,
     showComingSoon: PropTypes.bool,
   }).isRequired,

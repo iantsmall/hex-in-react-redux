@@ -1,11 +1,19 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
+import { calculateWinner, isRedNext } from './utils';
 
 /**
  * Direct selector to the hexGame state domain
  */
 
-const selectHexGameDomain = state => state.hexGame || initialState;
+const selectHexGameDomain = state => {
+  const storedState = state.hexGame || initialState;
+  return {
+    ...storedState,
+    winner: calculateWinner(storedState.history),
+    isRedNext: isRedNext(storedState.turnNumber),
+  };
+};
 
 /**
  * Other specific selectors

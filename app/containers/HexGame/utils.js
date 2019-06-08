@@ -1,4 +1,5 @@
 import { gridPoints } from 'utils/hexgrid';
+import { RED_PLAYER, BLUE_PLAYER } from './constants';
 
 // TODO replace with a nice in app GUI console for later reference
 const recordDebugLog = msg => console.debug(msg); // eslint-disable-line no-console
@@ -99,13 +100,15 @@ const calculateWinner = hexes => {
   const isblueWinner = findPath(0, hexes.length - 1, hexes);
   const isRedWinner = !isblueWinner && findPath(1, hexes.length - 2, hexes);
   if (isblueWinner) {
-    return 'blue';
+    return BLUE_PLAYER;
   }
   if (isRedWinner) {
-    return 'red';
+    return RED_PLAYER;
   }
   return undefined;
 };
+
+const isRedNext = turnNumber => turnNumber % 2 === 0;
 
 export {
   recordDebugLog,
@@ -113,4 +116,5 @@ export {
   getNeighbors,
   findPath,
   calculateWinner,
+  isRedNext,
 };

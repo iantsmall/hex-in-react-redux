@@ -9,6 +9,7 @@ import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Background from 'images/bg.jpg';
+import ErrorBoundary from 'containers/ErrorBoundary';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -19,6 +20,7 @@ const Wrapper = styled.div`
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  overflow-x: hidden;
   @media (min-width: 100px) and (max-width: 728px) and (orientation: portrait) {
     margin: 0px;
     background: url(${Background}) fixed no;
@@ -46,7 +48,7 @@ const PageWrapper = props => (
     <Helmet>
       <link {...bootstrapCssLinkProps} />
     </Helmet>
-    <React.Fragment {...props} />
+    <ErrorBoundary {...props} />
   </Wrapper>
 );
 PageWrapper.propTypes = {};
