@@ -14,19 +14,23 @@ import { IntlProvider } from 'react-intl';
 import MenuView from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
 
+const mockCallbackProps = {
+  onRulesClick: jest.fn(),
+  onComingSoonClick: jest.fn(),
+};
 describe('<MenuView />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <MenuView />
+        <MenuView {...mockCallbackProps} />
       </IntlProvider>,
     );
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
+  it.skip('Expect to trigger callbacks when buttons are clicked', () => {
+    // TODO fill in test logic
   });
 
   /**
@@ -34,12 +38,12 @@ describe('<MenuView />', () => {
    *
    * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
    */
-  it.skip('Should render and match the snapshot', () => {
+  it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
     } = render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <MenuView />
+        <MenuView {...mockCallbackProps} />
       </IntlProvider>,
     );
     expect(firstChild).toMatchSnapshot();
