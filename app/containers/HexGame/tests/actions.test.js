@@ -21,12 +21,12 @@ import {
 describe('HexGame actions', () => {
   describe('Jump To Action', () => {
     it('has a type of JUMP_TO_ACTION, and expected destination', () => {
-      for (let i = 0; i < Number.MAX_SAFE_INTEGER; i += 1) {
+      for (let i = 0; i < 400; i += 1) {
         const expected = {
           type: JUMP_TO_ACTION,
           destination: i,
         };
-        expect(jumpToAction({ desination: i })).toEqual(expected);
+        expect(jumpToAction({ destination: i })).toEqual(expected);
       }
     });
   });
@@ -68,7 +68,7 @@ describe('HexGame actions', () => {
         type: CLAIM_HEX_ACTION,
         hexKey: 'Test Hex Key',
       };
-      expect(claimHexAction(expected.hexKey)).toEqual(expected);
+      expect(claimHexAction({ hexKey: expected.hexKey })).toEqual(expected);
     });
   });
   describe('Change Board Size Action', () => {
@@ -77,7 +77,9 @@ describe('HexGame actions', () => {
         type: CHANGE_BOARD_SIZE_ACTION,
         boardSize: 18,
       };
-      expect(changeBoardSizeAction(expected.boardSize)).toEqual(expected);
+      expect(changeBoardSizeAction({ boardSize: expected.boardSize })).toEqual(
+        expected,
+      );
     });
   });
 });
