@@ -12,29 +12,20 @@ import { render } from 'react-testing-library';
 
 import { Menu } from '../index';
 
-const { expect, jest } = global;
+// const { expect, jest } = global;
 
 describe('<Menu />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
-    render(<Menu dispatch={dispatch} />);
+    render(<Menu dispatch={dispatch} menu={{}} />);
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
-  });
-
-  /**
-   * Unskip this test to use it
-   *
-   * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
-   */
-  it.skip('Should render and match the snapshot', () => {
+  it('Should render and match the initial snapshot', () => {
     const {
       container: { firstChild },
-    } = render(<Menu />);
+    } = render(<Menu menu={{}} />);
     expect(firstChild).toMatchSnapshot();
   });
 });

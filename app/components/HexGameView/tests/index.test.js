@@ -14,21 +14,37 @@ import { IntlProvider } from 'react-intl';
 import HexGameView from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
 
+const props = {
+  winner: undefined,
+  isRedNext: true,
+  handlers: {
+    jumpToFirst: jest.fn(),
+    jumpToPrevious: jest.fn(),
+    jumpTo: jest.fn(),
+    jumpToNext: jest.fn(),
+    jumpToLast: jest.fn(),
+    claimHex: jest.fn(),
+  },
+  history: [[]],
+  turnNumber: 0,
+  boardSize: 9,
+};
+
 describe('<HexGameView />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <HexGameView />
+        <HexGameView {...props} />
       </IntlProvider>,
     );
     expect(spy).not.toHaveBeenCalled();
   });
-
-  it('Expect to have additional unit tests specified', () => {
+  it.skip('Expect to have additional unit tests specified', () => {
     expect(true).toEqual(false);
   });
 
+  // TODO test edge cases of game board states w/ snapshots
   /**
    * Unskip this test to use it
    *
@@ -39,7 +55,7 @@ describe('<HexGameView />', () => {
       container: { firstChild },
     } = render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <HexGameView />
+        <HexGameView {...props} />
       </IntlProvider>,
     );
     expect(firstChild).toMatchSnapshot();

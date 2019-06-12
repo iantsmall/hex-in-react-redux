@@ -20,13 +20,15 @@ describe('<ErrorBoundary />', () => {
     const dispatch = jest.fn();
     render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <ErrorBoundary dispatch={dispatch} />
+        <ErrorBoundary dispatch={dispatch}>
+          <div />
+        </ErrorBoundary>
       </IntlProvider>,
     );
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Expect to have additional unit tests specified', () => {
+  it.skip('Expect to have additional unit tests specified', () => {
     expect(true).toEqual(false);
   });
 
@@ -36,11 +38,14 @@ describe('<ErrorBoundary />', () => {
    * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
    */
   it.skip('Should render and match the snapshot', () => {
+    const dispatch = jest.fn();
     const {
       container: { firstChild },
     } = render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <ErrorBoundary />
+        <ErrorBoundary dispatch={dispatch}>
+          <div />
+        </ErrorBoundary>
       </IntlProvider>,
     );
     expect(firstChild).toMatchSnapshot();

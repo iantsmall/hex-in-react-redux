@@ -1,6 +1,11 @@
 // import produce from 'immer';
 import menuReducer from '../reducer';
-// import { someAction } from '../actions';
+// import {
+//   showRulesAction,
+//   showComingSoonAction,
+//   hideRulesAction,
+//   hideComingSoonAction,
+// } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('menuReducer', () => {
@@ -18,15 +23,27 @@ describe('menuReducer', () => {
 
   /**
    * Example state change comparison
-   *
-   * it('should handle the someAction action correctly', () => {
-   *   const expectedResult = produce(state, draft => {
-   *     draft.loading = true;
-   *     draft.error = false;
-   *     draft.userData.nested = false;
-   *   });
-   *
-   *   expect(appReducer(state, someAction())).toEqual(expectedResult);
-   * });
    */
+  // it('should handle the someAction action correctly', () => {
+  //   const expectedResult = produce(state, draft => {
+  //     draft.loading = true;
+  //     draft.error = false;
+  //     draft.userData.nested = false;
+  //   });
+  //
+  //  expect(appReducer(state, someAction())).toEqual(expectedResult);
+  // });
+
+  /**
+   * Example state change comparison
+   */
+  // it('should handle the showRulesAction action correctly', () => {
+  //   const expectedResult = produce(state, draft => {
+  //     draft.loading = true;
+  //     draft.error = false;
+  //     draft.userData.nested = false;
+  //   });
+  //
+  //  expect(appReducer(state, showRulesAction())).toEqual(expectedResult);
+  // });
 });

@@ -10,14 +10,12 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import RulesModal from 'components/RulesModal';
 import ComingSoonModal from 'components/ComingSoonModal';
 import MenuView from 'components/MenuView';
 import makeSelectMenu from './selectors';
 import reducer from './reducer';
-import saga from './saga';
 import {
   showRulesAction,
   showComingSoonAction,
@@ -27,7 +25,6 @@ import {
 
 export function Menu({ dispatch = null, menu }) {
   useInjectReducer({ key: 'menu', reducer });
-  useInjectSaga({ key: 'menu', saga });
   return (
     <React.Fragment>
       <MenuView
@@ -36,11 +33,11 @@ export function Menu({ dispatch = null, menu }) {
       />
       <RulesModal
         onHide={() => dispatch(hideRulesAction())}
-        show={menu.showRules}
+        show={menu.showRules || false}
       />
       <ComingSoonModal
         onHide={() => dispatch(hideComingSoonAction())}
-        show={menu.showComingSoon}
+        show={menu.showComingSoon || false}
       />
     </React.Fragment>
   );

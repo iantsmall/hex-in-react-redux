@@ -87,7 +87,10 @@ ErrorBoundary.propTypes = {
   dispatch: PropTypes.func.isRequired,
   error: PropTypes.any,
   errorInfo: PropTypes.any,
-  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
+    PropTypes.element.isRequired,
+  ]),
 };
 
 function mapDispatchToProps(dispatch) {
