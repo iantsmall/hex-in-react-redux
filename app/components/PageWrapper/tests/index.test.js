@@ -12,8 +12,6 @@ import { render } from 'react-testing-library';
 
 import PageWrapper from '../index';
 
-const { jest, expect } = global;
-
 describe('<PageWrapper />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
