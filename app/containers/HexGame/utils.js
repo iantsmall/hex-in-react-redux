@@ -2,7 +2,8 @@ import { gridPoints } from 'utils/hexgrid';
 import { RED_PLAYER, BLUE_PLAYER } from './constants';
 
 // TODO replace with a nice in app GUI console for later reference
-const recordDebugLog = msg => console.debug(msg); // eslint-disable-line no-console
+const recordDebugLog = msg =>
+  typeof jest !== 'undefined' ? undefined : console.debug(msg); // eslint-disable-line no-console
 
 // / simple converter function to make a 2d array from a 1d array
 const convertArrayToMatrix = (arr, width) => {

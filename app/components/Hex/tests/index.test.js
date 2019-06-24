@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+// import { render } from 'react-testing-library';
+import render from 'utils/testRenderWithContext';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
 import Hex from '../index';

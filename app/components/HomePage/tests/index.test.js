@@ -1,20 +1,15 @@
 import React from 'react';
-import { render } from 'react-testing-library';
-import { IntlProvider } from 'react-intl';
+import { cleanup } from 'react-testing-library';
+import render from 'utils/testRenderWithContext';
 
 import HomePage from '../index';
 
-const { expect } = global;
-
 describe('<HomePage />', () => {
+  afterEach(cleanup);
   it('should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(
-      <IntlProvider locale="en">
-        <HomePage />
-      </IntlProvider>,
-    );
+    } = render(<HomePage />);
     expect(firstChild).toMatchSnapshot();
   });
 });

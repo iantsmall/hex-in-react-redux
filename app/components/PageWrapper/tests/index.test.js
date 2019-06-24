@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
+// import { render } from 'react-testing-library';
+import render from 'utils/testRenderWithContext';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
 import PageWrapper from '../index';
@@ -15,7 +16,11 @@ import PageWrapper from '../index';
 describe('<PageWrapper />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    render(<PageWrapper />);
+    render(
+      <PageWrapper>
+        <span>Some Test Text Content</span>
+      </PageWrapper>,
+    );
     expect(spy).not.toHaveBeenCalled();
   });
 

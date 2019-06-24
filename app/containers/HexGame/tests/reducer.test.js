@@ -4,16 +4,8 @@ import hexGameReducer from '../reducer';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('hexGameReducer', () => {
-  let state;
-  beforeEach(() => {
-    state = {
-      // default state params here
-    };
-  });
-
   it('returns the initial state', () => {
-    const expectedResult = state;
-    expect(hexGameReducer(undefined, {})).toEqual(expectedResult);
+    expect(hexGameReducer(undefined, {})).toMatchSnapshot();
   });
 
   /**

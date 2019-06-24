@@ -10,8 +10,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import HomePage from 'components/HomePage/Loadable';
+import NotFoundPage from 'components/NotFoundPage/Loadable';
 import PageWrapper from 'components/PageWrapper';
 import GlobalStyle from 'global-styles';
 
