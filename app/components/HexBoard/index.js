@@ -48,7 +48,7 @@ HexBoard.propTypes = {
   oY: PropTypes.number,
   width: PropTypes.number,
   height: PropTypes.number,
-  hexes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  hexes: PropTypes.arrayOf(PropTypes.string),
   onClick: PropTypes.func,
 };
 
@@ -62,6 +62,7 @@ HexBoard.defaultProps = {
   onClick: i => {
     console.warn(`No onClick defined, click ${i} unhandled`); // eslint-disable-line no-console
   },
+  hexes: [].fill(undefined, 0, 9),
 };
 
 export default memo(HexBoard);
