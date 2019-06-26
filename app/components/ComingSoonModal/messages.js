@@ -17,7 +17,7 @@ const features = [
   "improved 'Nav' menu",
 ];
 const bugs = [
-  'Navigation menu does not collapse as mobile resolutions',
+  'Navigation menu does not collapse at mobile resolutions',
 ];
 
 export default defineMessages({
