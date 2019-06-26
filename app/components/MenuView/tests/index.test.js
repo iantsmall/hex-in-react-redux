@@ -7,12 +7,13 @@
  */
 
 import React from 'react';
-import { render } from 'react-testing-library';
-import { IntlProvider } from 'react-intl';
+// import { render } from 'react-testing-library';
+// import { IntlProvider } from 'react-intl';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
+import render from 'utils/testRenderWithContext';
 import MenuView from '../index';
-import { DEFAULT_LOCALE } from '../../../i18n';
+// import { DEFAULT_LOCALE } from '../../../i18n';
 
 const mockCallbackProps = {
   onRulesClick: jest.fn(),
@@ -21,11 +22,7 @@ const mockCallbackProps = {
 describe('<MenuView />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <MenuView {...mockCallbackProps} />
-      </IntlProvider>,
-    );
+    render(<MenuView {...mockCallbackProps} />);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -41,11 +38,7 @@ describe('<MenuView />', () => {
   it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <MenuView {...mockCallbackProps} />
-      </IntlProvider>,
-    );
+    } = render(<MenuView {...mockCallbackProps} />);
     expect(firstChild).toMatchSnapshot();
   });
 });

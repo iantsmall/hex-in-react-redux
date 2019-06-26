@@ -7,12 +7,14 @@
  */
 
 import React from 'react';
+import { fireEvent, cleanup } from 'react-testing-library';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 import render from 'utils/testRenderWithContext';
 
 import { HexGame } from '../index';
 
 describe('<HexGame />', () => {
+  afterEach(cleanup);
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
@@ -23,11 +25,9 @@ describe('<HexGame />', () => {
   });
 
   it.skip('Should dispatch a jumpToFirstAction when First Turn button is clicked', () => {
-    const dispatch = jest.fn();
-    render(
-      <HexGame dispatch={dispatch} boardSize={9} hexGame={{ boardSize: 5 }} />,
-    );
-    expect(true).toEqual(false);
+    const { getByTestId, getByText } = render(<HexGame />);
+    fireEvent.click(getByText('<<'));
+    expect(getByTestId('turnNumber').textContent).toBe(0);
   });
 
   it.skip('Should dispatch a jumpToPreviousAction when Previous Turn button is clicked', () => {
