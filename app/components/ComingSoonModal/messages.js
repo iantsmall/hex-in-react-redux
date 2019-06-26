@@ -15,9 +15,10 @@ const features = [
   'Nicer framing graphics for game',
   'Fancier board and tile images',
   "improved 'Nav' menu",
-  'Conversion to react-redux for state management',
 ];
-const bugs = [];
+const bugs = [
+  'Navigation menu does not collapse as mobile resolutions',
+];
 
 export default defineMessages({
   title: {
