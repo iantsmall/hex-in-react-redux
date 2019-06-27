@@ -10,7 +10,6 @@ import { Helmet } from 'react-helmet';
 import { Container, Row, Col, Jumbotron } from 'react-bootstrap';
 
 import HexGame from 'containers/HexGame';
-import Menu from 'containers/Menu/Loadable';
 
 export default function HomePage() {
   const boardSize = 9;
@@ -24,11 +23,6 @@ export default function HomePage() {
         />
       </Helmet>
       <Container>
-        <Row>
-          <Col xs={12}>
-            <Menu />
-          </Col>
-        </Row>
         <Row>
           <Col xs={12}>
             <div id="alert" />

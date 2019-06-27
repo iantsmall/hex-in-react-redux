@@ -9,13 +9,6 @@ exports[`<HomePage /> should render and match the snapshot 1`] = `
   >
     <div
       class="col-12"
-    />
-  </div>
-  <div
-    class="row"
-  >
-    <div
-      class="col-12"
     >
       <div
         id="alert"

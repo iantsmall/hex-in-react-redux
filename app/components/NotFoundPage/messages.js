@@ -10,6 +10,10 @@ export const scope = 'app.containers.NotFoundPage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the NotFoundPage container!',
+    defaultMessage: 'Missing Page!',
+  },
+  text: {
+    id: `${scope}.text`,
+    defaultMessage: 'Sorry, I could not find that page.',
   },
 });

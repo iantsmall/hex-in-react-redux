@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import Background from 'images/bg.jpg';
 import ErrorBoundary from 'containers/ErrorBoundary';
+import Menu from 'containers/Menu/Loadable';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -48,6 +49,9 @@ const PageWrapper = props => (
     <Helmet>
       <link {...bootstrapCssLinkProps} />
     </Helmet>
+    <ErrorBoundary {...props}>
+      <Menu />
+    </ErrorBoundary>
     <ErrorBoundary {...props} />
   </Wrapper>
 );

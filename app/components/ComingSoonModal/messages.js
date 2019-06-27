@@ -14,11 +14,8 @@ const features = [
   'Improved UI for rules and features',
   'Nicer framing graphics for game',
   'Fancier board and tile images',
-  "improved 'Nav' menu",
 ];
-const bugs = [
-  'Navigation menu does not collapse at mobile resolutions',
-];
+const bugs = [];
 
 export default defineMessages({
   title: {

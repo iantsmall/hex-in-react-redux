@@ -7,13 +7,27 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Container, Row, Col, Jumbotron } from 'react-bootstrap';
 
 import messages from './messages';
 
 export default function NotFound() {
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <Container>
+      <Row>
+        <Col xs={12}>
+          <div id="alert" />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <Jumbotron id="viewport" className="modal-container">
+            <h1>
+              <FormattedMessage {...messages.header} />
+            </h1>
+          </Jumbotron>
+        </Col>
+      </Row>
+    </Container>
   );
 }
