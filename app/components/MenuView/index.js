@@ -30,12 +30,17 @@ const MenuView = ({ onRulesClick, onComingSoonClick }) => (
       <Navbar.Collapse className="justify-content-end">
         <Nav>
           <NavItem>
-            <Nav.Link href="#rules" onSelect={onRulesClick}>
+            <Nav.Link href="/">
+              <FormattedMessage {...messages.game} />
+            </Nav.Link>
+          </NavItem>
+          <NavItem>
+            <Nav.Link href="/#rules" onSelect={onRulesClick}>
               <FormattedMessage {...messages.rules} />
             </Nav.Link>
           </NavItem>
           <NavItem>
-            <Nav.Link href="#comingSoon" onSelect={onComingSoonClick}>
+            <Nav.Link href="/#comingSoon" onSelect={onComingSoonClick}>
               <FormattedMessage {...messages.comingSoon} />
             </Nav.Link>
           </NavItem>

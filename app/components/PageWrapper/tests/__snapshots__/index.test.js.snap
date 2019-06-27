@@ -29,7 +29,11 @@ exports[`<PageWrapper /> Should render and match the snapshot 1`] = `
           href="/"
         >
           <span>
-            Hex In React
+            A 
+            <strong>
+              Hex in Every Framework
+            </strong>
+             Project
           </span>
         </a>
       </div>
@@ -56,8 +60,21 @@ exports[`<PageWrapper /> Should render and match the snapshot 1`] = `
           >
             <a
               class="nav-link"
-              data-rb-event-key="#rules"
-              href="#rules"
+              data-rb-event-key="/"
+              href="/"
+            >
+              <span>
+                Hex In React-Redux
+              </span>
+            </a>
+          </div>
+          <div
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              data-rb-event-key="/#rules"
+              href="/#rules"
             >
               <span>
                 Rules
@@ -69,8 +86,8 @@ exports[`<PageWrapper /> Should render and match the snapshot 1`] = `
           >
             <a
               class="nav-link"
-              data-rb-event-key="#comingSoon"
-              href="#comingSoon"
+              data-rb-event-key="/#comingSoon"
+              href="/#comingSoon"
             >
               <span>
                 Roadmap

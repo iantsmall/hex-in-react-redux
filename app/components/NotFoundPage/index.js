@@ -25,6 +25,7 @@ export default function NotFound() {
             <h1>
               <FormattedMessage {...messages.header} />
             </h1>
+            <FormattedMessage {...messages.text} />
           </Jumbotron>
         </Col>
       </Row>

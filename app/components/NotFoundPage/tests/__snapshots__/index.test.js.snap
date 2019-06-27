@@ -30,6 +30,9 @@ exports[`<NotFoundPage /> should render and match the snapshot 1`] = `
             Missing Page!
           </span>
         </h1>
+        <span>
+          Sorry, I could not find that page.
+        </span>
       </div>
     </div>
   </div>
